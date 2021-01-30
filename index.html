@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-    <input type="text" class="form-control text-center" value="1">
-    <button class="btn btn-default"><i class="fas fa-plus"></i></button> -->
 
 <head>
     <meta charset="UTF-8">
@@ -38,20 +35,20 @@
             <h3>Booking Flights</h3>
             <div class="input-group">
                 <label for="">Flying From</label>
-                <input id="flying-from-input" class="inp-style" type="text" name="" placeholder="Dhaka, Bangladesh">
+                <input id="flying-from-count" class="inp-style" type="text" name="" placeholder="Dhaka, Bangladesh">
             </div>
             <div class="input-group">
                 <label for="">Flying To</label>
-                <input id="flying-to-input" class="inp-style" type="text" name="" placeholder="New York, United States">
+                <input id="flying-to-count" class="inp-style" type="text" name="" placeholder="New York, United States">
             </div>
             <div class="inputs">
                 <div class="input-group">
                     <label for="">Departure</label>
-                    <input id="departure-input" class="inp-style" type="date" name="">
+                    <input id="departure-count" class="inp-style" type="date" name="">
                 </div>
                 <div class="input-group">
                     <label for="">Return</label>
-                    <input id="returndate-input" class="inp-style" type="date" name="">
+                    <input id="return-count" class="inp-style" type="date" name="">
                 </div>
             </div>
 
@@ -61,8 +58,6 @@
                     <input id="f-class-count" class="inp-style inp-width" type="number" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <!-- <button id="f-class-incress" class="btn btn-success"><i class="fas fa-plus"></i></button>
-                    <button id="f-class-decress" class="btn btn-danger"><i class="fas fa-minus"></i></button> -->
                     <button onclick="clickPlusOrMinus('f-class', true)" class="btn btn-success"><i
                             class="fas fa-plus"></i></button>
                     <button onclick="clickPlusOrMinus('f-class', false)" class="btn btn-danger"><i
@@ -76,10 +71,8 @@
                     <input value="0" id="e-class-count" class="inp-style inp-width" type="number" name="">
                 </div>
                 <div class="plus-minus-btn">
-                    <!-- <button id="e-class-incress" class="btn btn-success"><i class="fas fa-plus"></i></button> -->
                     <button onclick="clickPlusOrMinus('e-class', true)" class="btn btn-success"><i
                             class="fas fa-plus"></i></button>
-                    <!-- <button id="e-class-decress" class="btn btn-danger"><i class="fas fa-minus"></i></button> -->
                     <button onclick="clickPlusOrMinus( 'e-class', false)" class="btn btn-danger"><i
                             class="fas fa-minus"></i></button>
                 </div>
@@ -91,7 +84,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p>$<span id="subtotal">0</span></p>
+                        <p>$<span id="subtotal-count">0</span></p>
                     </div>
                 </div>
 
@@ -113,7 +106,7 @@
                     </div>
                 </div>
             </div>
-            <button id="book-btn" class="btn-style">Book Now</button>
+            <button onclick="bookNowBtnEvent()" class="btn-style">Book Now</button>
         </div>
 
         <div class="booking-content">
@@ -132,74 +125,74 @@
                 <div class="container mt-5">
                     <div class="row">
                         <div class="col-md-5">
-                            <p class="tocpic-name">Flying From</p>
+                            <p class="topic-name">Flying From</p>
                         </div>
                         <div class="col-md-7">
-                            <p><span id="flying-from-result"></span></p>
+                            <p><span id="flying-from-on-ticket"></span></p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-5">
-                            <p class="tocpic-name ">Flying To</p>
+                            <p class="topic-name ">Flying To</p>
                         </div>
                         <div class="col-md-7">
-                            <p><span id="flying-to-result"></span></p>
+                            <p><span id="flying-to-on-ticket"></span></p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-5">
-                            <p class="tocpic-name">Departure</p>
+                            <p class="topic-name">Departure</p>
                         </div>
                         <div class="col-md-7">
-                            <p><span id="departure-result"></span></p>
+                            <p><span id="departure-on-ticket"></span></p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-5">
-                            <p class="tocpic-name">Return</p>
+                            <p class="topic-name">Return</p>
                         </div>
                         <div class="col-md-7">
-                            <p><span id="returndate-result"></span></p>
+                            <p><span id="return-on-ticket"></span></p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-5">
-                            <p class="tocpic-name">First Class Seat</p>
+                            <p class="topic-name">First Class Seat</p>
                         </div>
                         <div class="col-md-7">
-                            <p><span id="fristClassSeat-result"></span></p>
+                            <p><span id="f-class-on-ticket"></span></p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-5">
-                            <p class="tocpic-name">Economy Seat</p>
+                            <p class="topic-name">Economy Seat</p>
                         </div>
                         <div class="col-md-7">
-                            <p><span id="economySeat-result"></span></p>
+                            <p><span id="e-class-on-ticket"></span></p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-5">
-                            <p class="tocpic-name">Subtotal</p>
+                            <p class="topic-name">Subtotal</p>
                         </div>
                         <div class="col-md-7">
-                            <p><span id="subtotal-result"></span></p>
+                            <p>$<span id="subtotal-on-ticket"></span></p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-5">
-                            <p class="tocpic-name">Charge 10% VAT</p>
+                            <p class="topic-name">Charge 10% VAT</p>
                         </div>
                         <div class="col-md-7">
-                            <p><span id="vat-result"></span></p>
+                            <p>$<span id="vat-on-ticket"></span></p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-5">
-                            <p class="tocpic-name">Total</p>
+                            <p class="topic-name">Total</p>
                         </div>
                         <div class="col-md-7">
-                            <p class="text-white fw-bold bg-success"><span id="total-result"></span></p>
+                            <p class="text-white fw-bold bg-success">$<span id="total-on-ticket"></span></p>
                         </div>
                     </div>
                 </div>
@@ -216,8 +209,7 @@
     <!-- Script JS -->
     <script>
 
-        //////////// new code with funtion srtarting but 211 - 320 is ok
-
+        //////////// Plus & minus button activity, subtotal, vat, total amount started from here
         function clickPlusOrMinus(seatClass, isIncrease) {
             const seatInput = document.getElementById(seatClass + '-count').value;
             const seatInputNumber = parseInt(seatInput);
@@ -232,14 +224,32 @@
             calculate()
         }
 
+        //////// Book now btn event strat from here
+        function bookNowBtnEvent() {
+            document.getElementById("book-section").style.display = "none"
+            document.getElementById("ticket").style.display = "block"
+
+            //// Ticket making
+            transfarInputElementToTicker("flying-from")
+            transfarInputElementToTicker("flying-to")
+            transfarInputElementToTicker("departure")
+            transfarInputElementToTicker("return")
+            transfarInputElementToTicker("f-class")
+            transfarInputElementToTicker("e-class")
+            makeTransferInTicket("subtotal")
+            makeTransferInTicket("vat")
+            makeTransferInTicket("total")
+
+        }
+
         function calculate() {
 
-            ///subtotal
+            /// subtotal
             const UpdateSubTotal = document.getElementById("f-class-count").value * 150 + document.getElementById("e-class-count").value * 100;
-            document.getElementById("subtotal").innerText = UpdateSubTotal;
+            document.getElementById("subtotal-count").innerText = UpdateSubTotal;
 
-            ///vat
-            const vatCount = document.getElementById("subtotal").innerText
+            /// vat
+            const vatCount = document.getElementById("subtotal-count").innerText
             const vatCountNumber = parseInt(vatCount)
             const updateTotalvat = (vatCountNumber * 10) / 100;
             document.getElementById("vat-count").innerText = updateTotalvat;
@@ -249,54 +259,15 @@
             document.getElementById("total-count").innerText = updateTotalAmount;
         }
 
-        //////// new code stop
+        function makeTransferInTicket(inputItem) {
+            const TransferToTicket = document.getElementById(inputItem + "-count").innerText
+            document.getElementById(inputItem + "-on-ticket").innerText = TransferToTicket;
+        }
 
-
-
-        ////////////////// book now btn press event
-        const bookBtn = document.getElementById("book-btn")
-        bookBtn.addEventListener("click", function () {
-            document.getElementById("book-section").style.display = "none"
-            document.getElementById("ticket").style.display = "block"
-
-            /// flying from
-            const flyingFrom = document.getElementById("flying-from-input").value;
-            document.getElementById("flying-from-result").innerText = flyingFrom;
-
-            /// flying to
-            const flyingTo = document.getElementById("flying-to-input").value;
-            document.getElementById("flying-to-result").innerText = flyingTo;
-
-            /// departure
-            const departure = document.getElementById("departure-input").value;
-            document.getElementById("departure-result").innerText = departure;
-
-            /// returndate
-            const returndate = document.getElementById("returndate-input").value;
-            document.getElementById("returndate-result").innerText = returndate;
-
-            ////fristClassSeat
-            const fristClassSeat = document.getElementById("f-class-count").value
-            document.getElementById("fristClassSeat-result").innerText = fristClassSeat;
-
-            //////economySeat
-            const economySeat = document.getElementById("e-class-count").value
-            document.getElementById("economySeat-result").innerText = economySeat;
-
-            //////subtotal
-            const subtotal = document.getElementById("subtotal").innerText
-            document.getElementById("subtotal-result").innerText = subtotal;
-
-            ////vat
-            const vat = document.getElementById("vat-count").innerText
-            document.getElementById("vat-result").innerText = vat;
-
-            ////total
-            const total = document.getElementById("total-count").innerText
-            document.getElementById("total-result").innerText = total;
-
-        })
-
+        function transfarInputElementToTicker(inputItem) {
+            const TransferToTicket = document.getElementById(inputItem + "-count").value
+            document.getElementById(inputItem + "-on-ticket").innerText = TransferToTicket;
+        }
     </script>
     <!--Thank You-->
 </body>

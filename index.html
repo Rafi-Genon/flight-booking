@@ -55,12 +55,12 @@
             <div class="input-group f-class">
                 <label for="">First Class ($150)</label>
                 <div>
-                    <input id="f-class-count" class="inp-style inp-width" type="number" name="" value="0">
+                    <input id="first-class-count" class="inp-style inp-width" type="number" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <button onclick="clickPlusOrMinus('f-class', true)" class="btn btn-success"><i
+                    <button onclick="clickPlusOrMinus('first-class', true)" class="btn btn-success"><i
                             class="fas fa-plus"></i></button>
-                    <button onclick="clickPlusOrMinus('f-class', false)" class="btn btn-danger"><i
+                    <button onclick="clickPlusOrMinus('first-class', false)" class="btn btn-danger"><i
                             class="fas fa-minus"></i></button>
                 </div>
             </div>
@@ -68,12 +68,12 @@
             <div class="input-group f-class">
                 <label for="">Economy ($100)</label>
                 <div>
-                    <input value="0" id="e-class-count" class="inp-style inp-width" type="number" name="">
+                    <input value="0" id="economic-class-count" class="inp-style inp-width" type="number" name="">
                 </div>
                 <div class="plus-minus-btn">
-                    <button onclick="clickPlusOrMinus('e-class', true)" class="btn btn-success"><i
+                    <button onclick="clickPlusOrMinus('economic-class', true)" class="btn btn-success"><i
                             class="fas fa-plus"></i></button>
-                    <button onclick="clickPlusOrMinus( 'e-class', false)" class="btn btn-danger"><i
+                    <button onclick="clickPlusOrMinus( 'economic-class', false)" class="btn btn-danger"><i
                             class="fas fa-minus"></i></button>
                 </div>
             </div>
@@ -160,7 +160,7 @@
                             <p class="topic-name">First Class Seat</p>
                         </div>
                         <div class="col-md-7">
-                            <p><span id="f-class-on-ticket"></span></p>
+                            <p><span id="first-class-on-ticket"></span></p>
                         </div>
                     </div>
                     <div class="row">
@@ -168,7 +168,7 @@
                             <p class="topic-name">Economy Seat</p>
                         </div>
                         <div class="col-md-7">
-                            <p><span id="e-class-on-ticket"></span></p>
+                            <p><span id="economic-class-on-ticket"></span></p>
                         </div>
                     </div>
                     <div class="row">
@@ -234,18 +234,18 @@
             transfarInputElementToTicker("flying-to")
             transfarInputElementToTicker("departure")
             transfarInputElementToTicker("return")
-            transfarInputElementToTicker("f-class")
-            transfarInputElementToTicker("e-class")
+            transfarInputElementToTicker("first-class")
+            transfarInputElementToTicker("economic-class")
             makeTransferInTicket("subtotal")
             makeTransferInTicket("vat")
             makeTransferInTicket("total")
 
         }
 
+        // function which are used on top in another function are given below
         function calculate() {
-
             /// subtotal
-            const UpdateSubTotal = document.getElementById("f-class-count").value * 150 + document.getElementById("e-class-count").value * 100;
+            const UpdateSubTotal = document.getElementById("first-class-count").value * 150 + document.getElementById("economic-class-count").value * 100;
             document.getElementById("subtotal-count").innerText = UpdateSubTotal;
 
             /// vat
@@ -259,11 +259,13 @@
             document.getElementById("total-count").innerText = updateTotalAmount;
         }
 
+        // this function take data from a HTML tag & and put in ticket section
         function makeTransferInTicket(inputItem) {
             const TransferToTicket = document.getElementById(inputItem + "-count").innerText
             document.getElementById(inputItem + "-on-ticket").innerText = TransferToTicket;
         }
 
+        // this function take data from a Input tag & and put in ticket section
         function transfarInputElementToTicker(inputItem) {
             const TransferToTicket = document.getElementById(inputItem + "-count").value
             document.getElementById(inputItem + "-on-ticket").innerText = TransferToTicket;

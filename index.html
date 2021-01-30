@@ -33,25 +33,25 @@
     </header>
 
     <!--Booking Section-->
-    <main class="main-content container">
+    <main class="main-content container" id="book-section">
         <div class="booking-form">
             <h3>Booking Flights</h3>
             <div class="input-group">
                 <label for="">Flying From</label>
-                <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
+                <input id="flying-from-input" class="inp-style" type="text" name="" placeholder="Dhaka, Bangladesh">
             </div>
             <div class="input-group">
                 <label for="">Flying To</label>
-                <input class="inp-style" type="text" name="" placeholder="New York, United States">
+                <input id="flying-to-input" class="inp-style" type="text" name="" placeholder="New York, United States">
             </div>
             <div class="inputs">
                 <div class="input-group">
                     <label for="">Departure</label>
-                    <input class="inp-style" type="date" name="">
+                    <input id="departure-input" class="inp-style" type="date" name="">
                 </div>
                 <div class="input-group">
                     <label for="">Return</label>
-                    <input class="inp-style" type="date" name="">
+                    <input id="returndate-input" class="inp-style" type="date" name="">
                 </div>
             </div>
 
@@ -65,16 +65,6 @@
                     <button id="f-class-decress" class="btn btn-danger"><i class="fas fa-minus"></i></button>
                 </div>
             </div>
-
-            <!-- <div class="input-group f-class">
-                <div>
-                    <label for="">Economy ($100)</label>
-                    <input class="inp-style inp-width" type="number" name="">
-                </div>
-                <div class="plus-minus-btn">
-                    <p> <span>+</span> <span>-</span> </p>
-                </div>
-            </div> -->
 
             <div class="input-group f-class">
                 <label for="">Economy ($100)</label>
@@ -115,7 +105,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button id="book-btn" class="btn-style">Book Now</button>
         </div>
 
         <div class="booking-content">
@@ -125,6 +115,89 @@
                 voluptatibus quam</p>
         </div>
     </main>
+
+    <!-- ticket section -->
+    <section id="ticket">
+        <div class="d-flex justify-content-center mt-5">
+            <div class="col-md-7 bg-light p-3 rounded-3">
+                <h1 style="text-align: center;">Here is your ticket</h1>
+                <div class="container mt-5">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p class="tocpic-name">Flying From</p>
+                        </div>
+                        <div class="col-md-8">
+                            <p><span id="flying-from-result">kjkjyhjbkjbgch</span></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p class="tocpic-name">Flying To</p>
+                        </div>
+                        <div class="col-md-8">
+                            <p><span id="flying-to-result">kjkjyhjbkjbgch</span></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p class="tocpic-name">Departure</p>
+                        </div>
+                        <div class="col-md-8">
+                            <p><span id="departure-result"></span></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p class="tocpic-name">Return</p>
+                        </div>
+                        <div class="col-md-8">
+                            <p><span id="returndate-result">kjkjyhjbkjbgch</span></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p class="tocpic-name">First Class Seat</p>
+                        </div>
+                        <div class="col-md-8">
+                            <p><span id="fristClassSeat-result">kjkjyhjbkjbgch</span></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p class="tocpic-name">Economy Seat</p>
+                        </div>
+                        <div class="col-md-8">
+                            <p><span id="economySeat-result">kjkjyhjbkjbgch</span></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p class="tocpic-name">Subtotal</p>
+                        </div>
+                        <div class="col-md-8">
+                            <p><span id="subtotal-result">kjkjyhjbkjbgch</span></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p class="tocpic-name">Charge 10% VAT</p>
+                        </div>
+                        <div class="col-md-8">
+                            <p><span id="tax-result">kjkjyhjbkjbgch</span></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p class="tocpic-name">Total</p>
+                        </div>
+                        <div class="col-md-8">
+                            <p><span id="total-result">kjkjyhjbkjbgch</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
     <!-- bootstrap Js -->
@@ -160,7 +233,7 @@
             const totalAmountNumber = parseInt(totalAmount)
             const updateTotalAmount = updateTotalTax + UpdateSubTotal;
             document.getElementById("total-count").innerText = updateTotalAmount;
-            
+
         })
 
         ///////////// first class decress
@@ -190,7 +263,7 @@
             document.getElementById("total-count").innerText = updateTotalAmount;
         })
 
-        // economic class incress
+        //////////// economic class incress
         const eClassIncress = document.getElementById("e-class-incress")
         eClassIncress.addEventListener("click", function () {
             const fClassInput = document.getElementById("e-class-input").value;
@@ -217,6 +290,7 @@
             document.getElementById("total-count").innerText = updateTotalAmount;
         })
 
+        ////////////////// economic class decress
         const eClassdecress = document.getElementById("e-class-decress")
         eClassdecress.addEventListener("click", function () {
             const fClassInput = document.getElementById("e-class-input").value;
@@ -242,6 +316,51 @@
             const updateTotalAmount = updateTotalTax + UpdateSubTotal;
             document.getElementById("total-count").innerText = updateTotalAmount;
         })
+
+        ////////////////// book now btn press event
+        const bookBtn = document.getElementById("book-btn")
+        bookBtn.addEventListener("click", function () {
+            document.getElementById("book-section").style.display = "none"
+            document.getElementById("ticket").style.display = "block"
+
+            /// flying from
+            const flyingFrom = document.getElementById("flying-from-input").value;
+            document.getElementById("flying-from-result").innerText = flyingFrom;
+
+            /// flying to
+            const flyingTo = document.getElementById("flying-to-input").value;
+            document.getElementById("flying-to-result").innerText = flyingTo;
+
+            /// departure
+            const departure = document.getElementById("departure-input").value;
+            document.getElementById("departure-result").innerText = departure;
+
+            /// returndate
+            const returndate = document.getElementById("returndate-input").value;
+            document.getElementById("returndate-result").innerText = returndate;
+
+            ////fristClassSeat
+            const fristClassSeat = document.getElementById("f-class-input").value
+            document.getElementById("fristClassSeat-result").innerText = fristClassSeat;
+
+            //////economySeat
+            const economySeat = document.getElementById("e-class-input").value
+            document.getElementById("economySeat-result").innerText = economySeat;
+
+            //////subtotal
+            const subtotal = document.getElementById("subtotal").innerText
+            document.getElementById("subtotal-result").innerText = subtotal;
+
+            ////tax
+            const tax = document.getElementById("tax-count").innerText
+            document.getElementById("tax-result").innerText = tax;
+
+            ////total
+            const total = document.getElementById("total-count").innerText
+            document.getElementById("total-result").innerText = total;
+
+        })
+
     </script>
     <!--Thank You-->
 </body>

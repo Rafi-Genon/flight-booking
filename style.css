@@ -123,3 +123,10 @@ nav ul li a:hover, a.active{
     display: flex;
     justify-content: space-between;
 }
+#ticket{
+    display: none;
+}
+.tocpic-name{
+    font-weight: bold;
+    font-size: 20px;
+}

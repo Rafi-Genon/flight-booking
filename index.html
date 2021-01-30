@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rafi's Flight</title>
     <!-- Fonts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
         rel="stylesheet">
@@ -46,7 +47,7 @@
             <div class="inputs">
                 <div class="input-group">
                     <label for="">Departure</label>
-                        <input class="inp-style" type="date" name="">
+                    <input class="inp-style" type="date" name="">
                 </div>
                 <div class="input-group">
                     <label for="">Return</label>
@@ -54,17 +55,17 @@
                 </div>
             </div>
             <div class="input-group f-class">
+                <label for="">First Class ($150)</label>
                 <div>
-                    <label for="">First Class ($150)</label>
                     <input class="inp-style inp-width" type="number" name="">
                 </div>
-                <button class="btn btn-light"><i class="fas fa-plus"></i></button>
                 <div class="plus-minus-btn">
-                     <p>+ -</p> 
+                    <button class="btn btn-success"><i class="fas fa-plus"></i></button>
+                    <button class="btn btn-danger"><i class="fas fa-minus"></i></button>
                 </div>
             </div>
 
-            <div class="input-group f-class">
+            <!-- <div class="input-group f-class">
                 <div>
                     <label for="">Economy ($100)</label>
                     <input class="inp-style inp-width" type="number" name="">
@@ -72,7 +73,19 @@
                 <div class="plus-minus-btn">
                     <p> <span>+</span> <span>-</span> </p>
                 </div>
+            </div> -->
+
+            <div class="input-group f-class">
+                <label for="">Economy ($100)</label>
+                <div>
+                    <input class="inp-style inp-width" type="number" name="">
+                </div>
+                <div class="plus-minus-btn">
+                    <button class="btn btn-success"><i class="fas fa-plus"></i></button>
+                    <button class="btn btn-danger"><i class="fas fa-minus"></i></button>
+                </div>
             </div>
+            
             <div class="calculations">
                 <div class="amount">
                     <div class="left">
@@ -115,7 +128,7 @@
 
     <!-- bootstrap Js -->
     <link rel="stylesheet" href="bootstrap/bootstrap.bundle.min.js">
-        <!--Thank You-->
+    <!--Thank You-->
 </body>
 
 </html>

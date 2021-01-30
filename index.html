@@ -54,14 +54,15 @@
                     <input class="inp-style" type="date" name="">
                 </div>
             </div>
+
             <div class="input-group f-class">
                 <label for="">First Class ($150)</label>
                 <div>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <input id="f-class-input" class="inp-style inp-width" type="number" name="" value="1">
                 </div>
                 <div class="plus-minus-btn">
-                    <button class="btn btn-success"><i class="fas fa-plus"></i></button>
-                    <button class="btn btn-danger"><i class="fas fa-minus"></i></button>
+                    <button id="f-class-incress" class="btn btn-success"><i class="fas fa-plus"></i></button>
+                    <button id="f-class-decress" class="btn btn-danger"><i class="fas fa-minus"></i></button>
                 </div>
             </div>
 
@@ -78,21 +79,21 @@
             <div class="input-group f-class">
                 <label for="">Economy ($100)</label>
                 <div>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <input id="e-class-input" class="inp-style inp-width" type="number" name="">
                 </div>
                 <div class="plus-minus-btn">
-                    <button class="btn btn-success"><i class="fas fa-plus"></i></button>
-                    <button class="btn btn-danger"><i class="fas fa-minus"></i></button>
+                    <button id="e-class-incress" class="btn btn-success"><i class="fas fa-plus"></i></button>
+                    <button id="e-class-decress" class="btn btn-danger"><i class="fas fa-minus"></i></button>
                 </div>
             </div>
-            
+
             <div class="calculations">
                 <div class="amount">
                     <div class="left">
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p>$500</p>
+                        <p>$<span id="subtotal">150</span></p>
                     </div>
                 </div>
 
@@ -127,7 +128,63 @@
 
 
     <!-- bootstrap Js -->
-    <link rel="stylesheet" href="bootstrap/bootstrap.bundle.min.js">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+
+    <!-- Script JS -->
+    <script>
+
+        // first class incress & decress
+        const fClassIncress = document.getElementById("f-class-incress")
+        fClassIncress.addEventListener("click", function () {
+            const fClassInput = document.getElementById("f-class-input").value;
+            const fClassInputNumber = parseInt(fClassInput);
+            const totalSeat = fClassInputNumber + 1;
+            document.getElementById("f-class-input").value = totalSeat;
+            
+            const currentSubtotal = document.getElementById("subtotal").innerText
+            const subtotalNumber = parseInt(currentSubtotal)
+            document.getElementById("subtotal").innerText = document.getElementById("f-class-input").value * 150;
+        })
+
+        const fClassdecress = document.getElementById("f-class-decress")
+        fClassdecress.addEventListener("click", function () {
+            const fClassInput = document.getElementById("f-class-input").value;
+            const fClassInputNumber = parseInt(fClassInput);
+            const totalSeat = fClassInputNumber - 1;
+            document.getElementById("f-class-input").value = totalSeat;
+            
+        const currentSubtotal = document.getElementById("subtotal").innerText
+        const subtotalNumber = parseInt(currentSubtotal)
+        document.getElementById("subtotal").innerText = document.getElementById("f-class-input").value * 150;
+        })
+        
+        // economic class
+        const eClassIncress = document.getElementById("e-class-incress")
+        eClassIncress.addEventListener("click", function () {
+            const fClassInput = document.getElementById("e-class-input").value;
+            const fClassInputNumber = parseInt(fClassInput);
+            const totalSeat = fClassInputNumber + 1;
+            document.getElementById("e-class-input").value = totalSeat;
+            
+            const currentSubtotal = document.getElementById("subtotal").innerText
+            const subtotalNumber = parseInt(currentSubtotal)
+            document.getElementById("subtotal").innerText = document.getElementById("e-class-input").value * 150;
+        })
+
+        const eClassdecress = document.getElementById("e-class-decress")
+        eClassdecress.addEventListener("click", function () {
+            const fClassInput = document.getElementById("e-class-input").value;
+            const fClassInputNumber = parseInt(fClassInput);
+            const totalSeat = fClassInputNumber - 1;
+            document.getElementById("e-class-input").value = totalSeat;
+            
+        const currentSubtotal = document.getElementById("subtotal").innerText
+        const subtotalNumber = parseInt(currentSubtotal)
+        document.getElementById("subtotal").innerText = document.getElementById("e-class-input").value * 150;
+        })
+    </script>
     <!--Thank You-->
 </body>
 

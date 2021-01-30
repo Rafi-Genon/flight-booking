@@ -58,22 +58,30 @@
             <div class="input-group f-class">
                 <label for="">First Class ($150)</label>
                 <div>
-                    <input id="f-class-input" class="inp-style inp-width" type="number" name="" value="1">
+                    <input id="f-class-count" class="inp-style inp-width" type="number" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <button id="f-class-incress" class="btn btn-success"><i class="fas fa-plus"></i></button>
-                    <button id="f-class-decress" class="btn btn-danger"><i class="fas fa-minus"></i></button>
+                    <!-- <button id="f-class-incress" class="btn btn-success"><i class="fas fa-plus"></i></button>
+                    <button id="f-class-decress" class="btn btn-danger"><i class="fas fa-minus"></i></button> -->
+                    <button onclick="clickPlusOrMinus('f-class', true)" class="btn btn-success"><i
+                            class="fas fa-plus"></i></button>
+                    <button onclick="clickPlusOrMinus('f-class', false)" class="btn btn-danger"><i
+                            class="fas fa-minus"></i></button>
                 </div>
             </div>
 
             <div class="input-group f-class">
                 <label for="">Economy ($100)</label>
                 <div>
-                    <input value="1" id="e-class-input" class="inp-style inp-width" type="number" name="">
+                    <input value="0" id="e-class-count" class="inp-style inp-width" type="number" name="">
                 </div>
                 <div class="plus-minus-btn">
-                    <button id="e-class-incress" class="btn btn-success"><i class="fas fa-plus"></i></button>
-                    <button id="e-class-decress" class="btn btn-danger"><i class="fas fa-minus"></i></button>
+                    <!-- <button id="e-class-incress" class="btn btn-success"><i class="fas fa-plus"></i></button> -->
+                    <button onclick="clickPlusOrMinus('e-class', true)" class="btn btn-success"><i
+                            class="fas fa-plus"></i></button>
+                    <!-- <button id="e-class-decress" class="btn btn-danger"><i class="fas fa-minus"></i></button> -->
+                    <button onclick="clickPlusOrMinus( 'e-class', false)" class="btn btn-danger"><i
+                            class="fas fa-minus"></i></button>
                 </div>
             </div>
 
@@ -83,7 +91,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p>$<span id="subtotal">250</span></p>
+                        <p>$<span id="subtotal">0</span></p>
                     </div>
                 </div>
 
@@ -92,7 +100,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p>$ <span id="tax-count">25</span></p>
+                        <p>$<span id="vat-count">0</span></p>
                     </div>
                 </div>
                 <hr>
@@ -101,7 +109,7 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p>$ <span id="total-count">275</span></p>
+                        <p>$<span id="total-count">0</span></p>
                     </div>
                 </div>
             </div>
@@ -183,7 +191,7 @@
                             <p class="tocpic-name">Charge 10% VAT</p>
                         </div>
                         <div class="col-md-7">
-                            <p><span id="tax-result"></span></p>
+                            <p><span id="vat-result"></span></p>
                         </div>
                     </div>
                     <div class="row">
@@ -208,114 +216,42 @@
     <!-- Script JS -->
     <script>
 
-        ////////////// first class incress
-        const fClassIncress = document.getElementById("f-class-incress")
-        fClassIncress.addEventListener("click", function () {
-            const fClassInput = document.getElementById("f-class-input").value;
-            const fClassInputNumber = parseInt(fClassInput);
-            const totalSeat = fClassInputNumber + 1;
-            document.getElementById("f-class-input").value = totalSeat;
+        //////////// new code with funtion srtarting but 211 - 320 is ok
 
-            // subtotal
-            const currentSubtotal = document.getElementById("subtotal").innerText
-            const subtotalNumber = parseInt(currentSubtotal)
-            const UpdateSubTotal = document.getElementById("f-class-input").value * 150 + document.getElementById("e-class-input").value * 100;
+        function clickPlusOrMinus(seatClass, isIncrease) {
+            const seatInput = document.getElementById(seatClass + '-count').value;
+            const seatInputNumber = parseInt(seatInput);
+            let totalSeat = seatInputNumber
+            if (isIncrease == true) {
+                totalSeat = seatInputNumber + 1;
+            }
+            if (isIncrease == false && seatInputNumber > 0) {
+                totalSeat = seatInputNumber - 1;
+            }
+            document.getElementById(seatClass + '-count').value = totalSeat;
+            calculate()
+        }
+
+        function calculate() {
+
+            ///subtotal
+            const UpdateSubTotal = document.getElementById("f-class-count").value * 150 + document.getElementById("e-class-count").value * 100;
             document.getElementById("subtotal").innerText = UpdateSubTotal;
 
-            // tax 
-            const taxCount = document.getElementById("subtotal").innerText
-            const taxCountNumber = parseInt(taxCount)
-            const updateTotalTax = (taxCountNumber * 10) / 100;
-            document.getElementById("tax-count").innerText = updateTotalTax;
+            ///vat
+            const vatCount = document.getElementById("subtotal").innerText
+            const vatCountNumber = parseInt(vatCount)
+            const updateTotalvat = (vatCountNumber * 10) / 100;
+            document.getElementById("vat-count").innerText = updateTotalvat;
 
             // total
-            const totalAmount = document.getElementById("total-count").innerText
-            const totalAmountNumber = parseInt(totalAmount)
-            const updateTotalAmount = updateTotalTax + UpdateSubTotal;
+            const updateTotalAmount = updateTotalvat + UpdateSubTotal;
             document.getElementById("total-count").innerText = updateTotalAmount;
+        }
 
-        })
+        //////// new code stop
 
-        ///////////// first class decress
-        const fClassdecress = document.getElementById("f-class-decress")
-        fClassdecress.addEventListener("click", function () {
-            const fClassInput = document.getElementById("f-class-input").value;
-            const fClassInputNumber = parseInt(fClassInput);
-            const totalSeat = fClassInputNumber - 1;
-            document.getElementById("f-class-input").value = totalSeat;
 
-            // subtotal
-            const currentSubtotal = document.getElementById("subtotal").innerText
-            const subtotalNumber = parseInt(currentSubtotal)
-            const UpdateSubTotal = document.getElementById("f-class-input").value * 150 + document.getElementById("e-class-input").value * 100;
-            document.getElementById("subtotal").innerText = UpdateSubTotal;
-
-            // tax 
-            const taxCount = document.getElementById("subtotal").innerText
-            const taxCountNumber = parseInt(taxCount)
-            const updateTotalTax = (taxCountNumber * 10) / 100;
-            document.getElementById("tax-count").innerText = updateTotalTax;
-
-            // total
-            const totalAmount = document.getElementById("total-count").innerText
-            const totalAmountNumber = parseInt(totalAmount)
-            const updateTotalAmount = updateTotalTax + UpdateSubTotal;
-            document.getElementById("total-count").innerText = updateTotalAmount;
-        })
-
-        //////////// economic class incress
-        const eClassIncress = document.getElementById("e-class-incress")
-        eClassIncress.addEventListener("click", function () {
-            const fClassInput = document.getElementById("e-class-input").value;
-            const fClassInputNumber = parseInt(fClassInput);
-            const totalSeat = fClassInputNumber + 1;
-            document.getElementById("e-class-input").value = totalSeat;
-
-            // subtotal
-            const currentSubtotal = document.getElementById("subtotal").innerText
-            const subtotalNumber = parseInt(currentSubtotal)
-            const UpdateSubTotal = document.getElementById("f-class-input").value * 150 + document.getElementById("e-class-input").value * 100;
-            document.getElementById("subtotal").innerText = UpdateSubTotal;
-
-            // tax 
-            const taxCount = document.getElementById("subtotal").innerText
-            const taxCountNumber = parseInt(taxCount)
-            const updateTotalTax = (taxCountNumber * 10) / 100;
-            document.getElementById("tax-count").innerText = updateTotalTax;
-
-            // total
-            const totalAmount = document.getElementById("total-count").innerText
-            const totalAmountNumber = parseInt(totalAmount)
-            const updateTotalAmount = updateTotalTax + UpdateSubTotal;
-            document.getElementById("total-count").innerText = updateTotalAmount;
-        })
-
-        ////////////////// economic class decress
-        const eClassdecress = document.getElementById("e-class-decress")
-        eClassdecress.addEventListener("click", function () {
-            const fClassInput = document.getElementById("e-class-input").value;
-            const fClassInputNumber = parseInt(fClassInput);
-            const totalSeat = fClassInputNumber - 1;
-            document.getElementById("e-class-input").value = totalSeat;
-
-            // subtotal
-            const currentSubtotal = document.getElementById("subtotal").innerText
-            const subtotalNumber = parseInt(currentSubtotal)
-            const UpdateSubTotal = document.getElementById("f-class-input").value * 150 + document.getElementById("e-class-input").value * 100;
-            document.getElementById("subtotal").innerText = UpdateSubTotal;
-
-            // tax 
-            const taxCount = document.getElementById("subtotal").innerText
-            const taxCountNumber = parseInt(taxCount)
-            const updateTotalTax = (taxCountNumber * 10) / 100;
-            document.getElementById("tax-count").innerText = updateTotalTax;
-
-            // total
-            const totalAmount = document.getElementById("total-count").innerText
-            const totalAmountNumber = parseInt(totalAmount)
-            const updateTotalAmount = updateTotalTax + UpdateSubTotal;
-            document.getElementById("total-count").innerText = updateTotalAmount;
-        })
 
         ////////////////// book now btn press event
         const bookBtn = document.getElementById("book-btn")
@@ -340,20 +276,20 @@
             document.getElementById("returndate-result").innerText = returndate;
 
             ////fristClassSeat
-            const fristClassSeat = document.getElementById("f-class-input").value
+            const fristClassSeat = document.getElementById("f-class-count").value
             document.getElementById("fristClassSeat-result").innerText = fristClassSeat;
 
             //////economySeat
-            const economySeat = document.getElementById("e-class-input").value
+            const economySeat = document.getElementById("e-class-count").value
             document.getElementById("economySeat-result").innerText = economySeat;
 
             //////subtotal
             const subtotal = document.getElementById("subtotal").innerText
             document.getElementById("subtotal-result").innerText = subtotal;
 
-            ////tax
-            const tax = document.getElementById("tax-count").innerText
-            document.getElementById("tax-result").innerText = tax;
+            ////vat
+            const vat = document.getElementById("vat-count").innerText
+            document.getElementById("vat-result").innerText = vat;
 
             ////total
             const total = document.getElementById("total-count").innerText
